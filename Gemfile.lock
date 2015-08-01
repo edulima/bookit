@@ -59,6 +59,3 @@ DEPENDENCIES
   poltergeist (>= 1.5.1)
   rspec
   selenium-webdriver
-
-BUNDLED WITH
-   1.10.6

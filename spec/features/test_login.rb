@@ -38,25 +38,23 @@ feature 'fff' do
 			  
 				 unavailable = page.all('.aspNetDisabled')
 
-				 newArray = []
+				 myArray = countArrayElements(unavailable)
+
 				 inc = 0
-				 for i in unavailable
+				 for i in days_of_month
 
-				 		newArray.push(unavailable[inc].text)
+				 		puts "day of the month: #{days_of_month[inc]}"
+				 		puts "number of days found: #{myArray.count(days_of_month[inc])}"
 			
-				 		puts " Element value: " + newArray[inc] + " Element occurence: "  + newArray.count(inc).text
+						str = myArray.count(days_of_month[inc])
+				   
+				
 
-				 		inc = inc + 1
+							inc = inc + 1
+
 
 				 end
 
-		
-
-			
-
-				
-				newArray.delete_at(2) 
-				
 
 				 counter = 0
 				 
@@ -73,11 +71,11 @@ feature 'fff' do
 				 	# puts unavailable_dates[counter].text
 				 	# puts days_of_month[counter]
 				
-				 	if newArray.include?(test)
-				 		puts "test"
-				 	else
-				 		puts "echo lo qui"
-				 	end
+				 	# if newArray.include?(test)
+				 	# 	puts "test"
+				 	# else
+				 	# 	puts "echo lo qui"
+				 	# end
 
 				 	 counter = counter + 1	
 
@@ -90,3 +88,18 @@ feature 'fff' do
 	end
 
 end
+
+
+def countArrayElements(array)
+		 inc = 0
+		 newArray = []
+		 for i in array
+
+				 		newArray.push(array[inc].text)
+				 		#puts  "element: #{newArray[inc]}  times:  #{newArray.count(newArray[inc])}"
+				 		inc = inc + 1
+
+				 end
+		return newArray
+end	
+
