@@ -205,6 +205,7 @@ end
 def calculateDays(days_of_month, bookedDays, available_times, available_dates, calendar)
 
 	 inc = 0
+	 
 				 for i in days_of_month
 
 				 	  available_times.clear
@@ -233,6 +234,7 @@ def calculateDays(days_of_month, bookedDays, available_times, available_dates, c
 							puts "for day #{tempDay}  of #{getCurrentMonth()} there are #{available_times.length} time slots available"
 
 						end
+
 
 						inc = inc + 1
 
