@@ -22,7 +22,7 @@ feature 'fff' do
 
 	
 
-		page.find('#MainContent_LinkButtonNext').click
+		#page.find('#MainContent_LinkButtonNext').click
 
 			# within :table, 'MainContent_AppointmentDateTime1_Control_Calendar1_Calendar_Calendar1_Calendar1' do
 
@@ -47,12 +47,7 @@ feature 'fff' do
 				 		puts "number of days found: #{myArray.count(days_of_month[inc])}"
 			
 						str = myArray.count(days_of_month[inc])
-				   
-				
-
-							inc = inc + 1
-
-
+						inc = inc + 1
 				 end
 
 
@@ -64,7 +59,7 @@ feature 'fff' do
 				 	test = days_of_month[counter]
 				 	
 				 	test2 = unavailable[counter].text
-				
+					
 				 	# puts test
 				 	# puts test2
 
