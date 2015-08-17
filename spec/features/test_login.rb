@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'pp'
+
 
 
 feature 'fff' do 
@@ -23,6 +25,7 @@ feature 'fff' do
 
 			available_dates = Array.new
 			available_times = Array.new
+			times_array = Array.new(42) { Array.new(5,0) }
 
 			days_of_month = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
 			
@@ -32,7 +35,7 @@ feature 'fff' do
 
 				 bookedDays = countArrayElements(findBookedDays)
 
-				 calculateDays(days_of_month, bookedDays, available_times, available_dates, getCurrentMonth())
+				 calculateDays(days_of_month, bookedDays, available_times, available_dates, getCurrentMonth(), times_array)
 
 				 sleep 3
 
@@ -44,7 +47,7 @@ feature 'fff' do
 
 				 bookedDays = countArrayElements(findBookedDays)
 
-				 calculateDays(days_of_month, bookedDays, available_times, available_dates, "sep")
+				 calculateDays(days_of_month, bookedDays, available_times, available_dates, "sep", times_array)
 
 
 				  sleep 3
@@ -145,8 +148,9 @@ def getAvailableDays(str, dayOfMonth, month)
 						
 						countDaysOnMontg = setAugustCalendar()
 						days = countDaysOnMontg.count(dayOfMonth)
-
+							puts "returning days: #{days}"
 							if days == 2
+								puts "returning day of month: #{dayOfMonth}"
 				  				return dayOfMonth
 							end	
 
@@ -202,7 +206,7 @@ def getNextMonth()
 end
 
 
-def calculateDays(days_of_month, bookedDays, available_times, available_dates, calendar)
+def calculateDays(days_of_month, bookedDays, available_times, available_dates, calendar, times_array)
 
 	 inc = 0
 	 
@@ -217,7 +221,7 @@ def calculateDays(days_of_month, bookedDays, available_times, available_dates, c
 						if tempDay != nil
 
 							available_dates.push(tempDay)
-						
+					
 							clickOnAvailableDay(tempDay)
 
 							tempArray = getAvailableTime()
@@ -226,12 +230,15 @@ def calculateDays(days_of_month, bookedDays, available_times, available_dates, c
 							for i in tempArray
 
 								available_times.push(tempArray[t].text)
-
+								times_array[inc][t] = tempArray[t].text
+								
 								t += 1
 
 							end
 
-							puts "for day #{tempDay}  of #{getCurrentMonth()} there are #{available_times.length} time slots available"
+							puts "for day #{tempDay}  of #{getCurrentMonth()} there are #{available_times.length} time slots available #{times_array[inc][0]}, #{times_array[inc][1]}, #{times_array[inc][2]}, #{times_array[inc][3]}, #{times_array[inc][4]}"
+							# puts "length of available days: #{available_dates.length}"
+							# puts "length of available times: #{times_array.length}"
 
 						end
 
@@ -239,6 +246,9 @@ def calculateDays(days_of_month, bookedDays, available_times, available_dates, c
 						inc = inc + 1
 
 				 end
+
+				 			
+
 end
 
 
